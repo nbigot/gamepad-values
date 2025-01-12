@@ -1,0 +1,55 @@
+{
+    "tasks": [
+      {
+        "type": "shell",
+        "label": "configure",
+        "command": "cmake",
+        "args": [
+          "-DCMAKE_BUILD_TYPE=Debug",
+          "-DCMAKE_EXPORT_COMPILE_COMMANDS:BOOL=TRUE",
+          "--no-warn-unused-cli",
+          "-G",
+          "Visual Studio 15 2017",
+          "-T",
+          "host=x86",
+          "-A",
+          "x64",
+          "-S",
+          ".",
+          "-B",
+          "./build"
+        ],
+        "options": {
+          "cwd": "${workspaceFolder}/gamepad-values"
+        },
+        "problemMatcher": [
+          "$msCompile"
+        ]
+      },
+      {
+        "type": "shell",
+        "label": "build",
+        "command": "cmake",
+        "args": [
+          "--build",
+          "./build"
+        ],
+        "options": {
+          "cwd": "${workspaceFolder}/gamepad-values"
+        },
+        "problemMatcher": []
+      },
+      {
+        "type": "cmake",
+        "label": "CMake: clean rebuild",
+        "command": "cleanRebuild",
+        "targets": [
+          "all"
+        ],
+        "preset": "${command:cmake.activeBuildPresetName}",
+        "group": "build",
+        "problemMatcher": [],
+        "detail": "CMake template clean rebuild task"
+      }
+    ]
+  }
